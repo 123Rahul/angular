@@ -1,0 +1,16 @@
+<div>
+    <form (ngSubmit)="submit()" [formGroup]="form">
+
+        <div *ngFor="let alt of alts" class="form-row">
+            <alt-df [alt]="alt" [form]="form"></alt-df>
+        </div>
+
+        <div class="form-row">
+            <button type="submit" [disabled]="!form.valid">Save</button>
+        </div>
+    </form>
+
+    <div *ngIf="payload" class="form-row">
+        <pre>{{payload}}</pre>
+    </div>
+</div>
