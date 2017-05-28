@@ -15,6 +15,13 @@ export class AltDynamicFormComponent implements OnInit {
     }
     ngOnInit(){
         console.log(this.form);
+        if(this.alt['event']){
+            this.form.controls[this.alt.key].valueChanges.subscribe(
+                value=> {
+                    this.form.controls["emailAddress"].setValue(value+"@gmail.com");
+                }
+            )
+        }
     }
 
     get isValid(){

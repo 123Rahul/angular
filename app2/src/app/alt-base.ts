@@ -5,6 +5,7 @@ export class AltBase<T> {
     order: number;
     controlType: string;
     disable: boolean;
+    event:boolean;
 
     constructor(options:{
         value?:T,
@@ -12,7 +13,8 @@ export class AltBase<T> {
         label?:string,
         order?:number,
         controlType?:string,
-        disable?:boolean
+        disable?:boolean,
+        event?:boolean
     }={}){
         this.value=options.value;
         this.key=options.key||'';
@@ -20,5 +22,6 @@ export class AltBase<T> {
         this.order=options.order===undefined?1:options.order;
         this.controlType=options.controlType||'';
         this.disable=options.disable||false;
+        this.event=options.event||false;
     }
 }
