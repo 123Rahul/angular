@@ -1,0 +1,40 @@
+http://www.mocky.io/v2/592ad6db1000009100389704
+[
+    "Chennai",
+    "Bangalore",
+    "Delhi",
+    "Mumbai",
+    "Hyderabad"
+]
+
+http://www.mocky.io/v2/592ad3621000007c003896fb
+
+[
+    "New York",
+    "Chicago",
+    "Seattle",
+    "Los Angeles",
+    "San Francisco"
+]
+
+http://www.mocky.io/v2/592ad3cf1000007d003896fc
+
+[
+    "Beijing",
+    "Shanghai",
+    "Shenzhen",
+    "Tianjin",
+    "Hong Kong"
+]
+
+http://www.mocky.io/v2/592ad43b10000081003896fd
+
+[
+    "Moscow",
+    "Barnaul",
+    "Murmansk",
+    "Samara",
+    "Anadyr"
+]
+
+http://www.mocky.io/v2/592ad4bc1000007c003896ff

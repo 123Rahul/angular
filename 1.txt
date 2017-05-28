@@ -1,0 +1,142 @@
+{
+  "components": [
+    {
+      "name": "input1",
+      "id": "input1",
+      "type": "textbox",
+      "value": "",
+      "label": "First Name",
+      "placeholder": "First Name",
+      "hint": "First Name",
+      "visible": true,
+      "classes":["form-control"],
+      "validations": [
+        {
+          "required": true
+        },
+        {
+          "min_length": 2
+        },
+        {
+          "max_length": 20
+        },
+        {
+          "numeric": false
+        }
+      ]
+    },
+    {
+      "name": "input2",
+      "id": "input2",
+      "type": "textbox",
+      "value": "",
+      "label": "Middle Name",
+      "placeholder": "Middle Name",
+      "hint": "Middle Name",
+      "visible": true,
+      "classes":["form-control"],
+      "validations": [
+        {
+          "required": false
+        },
+        {
+          "min_length": 2
+        },
+        {
+          "max_length": 20
+        },
+        {
+          "numeric": false
+        }
+      ]
+    },
+    {
+      "name": "input3",
+      "id": "input3",
+      "type": "textbox",
+      "value": "",
+      "label": "Last Name",
+      "placeholder": "Last Name",
+      "hint": "Last Name",
+      "visible": true,
+      "classes":["form-control"],
+      "validations": [
+        {
+          "required": true
+        },
+        {
+          "min_length": 2
+        },
+        {
+          "max_length": 20
+        },
+        {
+          "numeric": false
+        }
+      ]
+    },
+    {
+      "name": "radio1",
+      "id": "radio1",
+      "type": "radiogroup",
+      "value": "",
+      "label": "Gender",
+      "placeholder": "Choose your gender",
+      "hint": "Choose your gender",
+      "visible": true,
+      "classes":["form-control"],
+      "options": [
+        {
+          "type": "radio",
+          "value": "male"
+        },
+        {
+          "type": "radio",
+          "value": "female"
+        }
+      ],
+      "validations": [
+        {
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "select1",
+      "id": "select1",
+      "type": "dropdown",
+      "value": "",
+      "label": "Country",
+      "placeholder": "Select country",
+      "hint": "Select country",
+      "visible": true,
+      "classes":["form-control"],
+      "options": [
+        "India",
+        "USA",
+        "China",
+        "Russia"
+      ],
+      "events":[
+        {
+          "event":"onchange",
+          "action":"populate",
+          "target":"select2",
+          "url":"http://www.mocky.io/v2/"
+        }
+      ]
+    },
+    {
+      "name": "select2",
+      "id": "select2",
+      "type": "dropdown",
+      "value": "",
+      "label": "State",
+      "placeholder": "Select state",
+      "hint": "Select state",
+      "visible": true,
+      "classes":["form-control"],
+      "options": []
+    }
+  ]
+}
