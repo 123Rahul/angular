@@ -20,16 +20,15 @@ export class AltDynamicFormComponent implements OnInit {
             this.form.controls[this.alt.key].valueChanges
                 .debounceTime(400)
                 .distinctUntilChanged()
-                .subscribe(value => {
-                    this.altEventService.populate(this.form.controls["brave"], value, this.alts)
-                        .subscribe(items=>{
-                            this.alts.forEach(element => {
-                                if(element["key"]=="brave"){
-                                    element["options"]=items;
-                                }
-                            });
+                .flatMap(value => 
+                    this.altEventService.populate(this.form.controls["brave"], value, this.alts))
+                    .subscribe(items=>{
+                        this.alts.forEach(element => {
+                            if(element["key"]=="brave"){
+                                element["options"]=items;
+                            }
                         });
-                })
+                    });
         }
     }
 
