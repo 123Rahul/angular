@@ -2,7 +2,7 @@
     <form (ngSubmit)="submit()" [formGroup]="form">
 
         <div *ngFor="let alt of alts" class="form-row">
-            <alt-df [alt]="alt" [form]="form"></alt-df>
+            <alt-df [alt]="alt" [form]="form" [alts]="alts"></alt-df>
         </div>
 
         <div class="form-row">

@@ -9,6 +9,7 @@ import { Sample1Component } from "./sample1.component";
 import { AltDynamicFormComponent } from "./alt-dynamic-form.component";
 import { AltControlService } from "./alt-control.service";
 import { AltHttpService } from "./alt-http.service";
+import { AltEventsService } from "./alt-events.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AltHttpService } from "./alt-http.service";
   ],
   providers: [
     AltControlService, 
-    AltHttpService
+    AltHttpService,
+    AltEventsService
   ],
   bootstrap: [AppComponent]
 })
