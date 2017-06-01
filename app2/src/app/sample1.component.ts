@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
-import { AltBase } from "./alt-base";
-import { AltControlService } from "./alt-control.service";
+import { AltControlService } from "../alt/alt-control.service";
+import { AltHttpService } from "./alt-http.service";
 
 @Component({
     selector: 'sample1',
@@ -10,14 +10,17 @@ import { AltControlService } from "./alt-control.service";
     providers:[AltControlService]
 })
 export class Sample1Component implements OnInit {
-    @Input() alts: AltBase<any>[];
     form: FormGroup;
     payload='';
-
-    constructor(private altControl: AltControlService){ }
+    alts: any[];
+    constructor(private altHttpService:AltHttpService, private altControl: AltControlService){ }
 
     ngOnInit(){
-        this.form = this.altControl.toFormGroup(this.alts);
+        this.altHttpService.getSample1Data()
+            .subscribe(response=>{
+                this.alts=this.altControl.createAlts(response);
+                this.form = this.altControl.toFormGroup(this.alts);
+            })
     }
 
     submit(){
