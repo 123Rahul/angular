@@ -5,7 +5,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 
 @Injectable()
-export class AltHttpService {
+export class AppHttpService {
     private mockUrl = "http://www.mocky.io/v2/592fd109110000cd11b392a1";
 
     constructor(private http: Http){ }

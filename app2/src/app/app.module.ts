@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AltModule } from "../alt/alt.module";
 import { AppComponent } from './app.component';
 import { Sample1Component } from "./sample1.component";
-import { AppHttpService } from "./app-http.service";
+import { AppHttpService } from "./app.http-service";
 
 @NgModule({
   declarations: [
