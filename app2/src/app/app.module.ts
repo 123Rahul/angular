@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AltModule } from "../alt/alt.module";
+import { Datatable } from "../datatable/datatable.module";
+
 import { AppComponent } from './app.component';
 import { Sample1Component } from "./sample1.component";
 import { AppHttpService } from "./app.http-service";
@@ -17,7 +19,8 @@ import { AppHttpService } from "./app.http-service";
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
-    AltModule
+    AltModule,
+    Datatable
   ],
   providers: [ 
     AppHttpService

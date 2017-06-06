@@ -1,0 +1,10 @@
+<div>
+    <div *ngFor="let item of data">{{item.name}}</div>
+</div>
+<div>
+    <select (change)="getDataAndUpdateUI()" [(ngModel)]="length">
+        <option *ngFor="let item of lengthList" ng-value="item.value">{{item.key}}</option>
+    </select>
+    <button (click)="previous()"><</button>
+    <button (click)="next()">></button>
+</div>

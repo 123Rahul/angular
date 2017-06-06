@@ -15,7 +15,6 @@ export class AltDynamicFormComponent implements OnInit {
 
     constructor(private altEventService:AltEventsService){ }
     ngOnInit(){
-        console.log(this.form);
         if(this.alt['event']){
             this.form.controls[this.alt.key].valueChanges
                 .debounceTime(400)

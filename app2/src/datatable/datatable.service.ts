@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, Response, Headers } from "@angular/http";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
@@ -10,17 +10,25 @@ export class DatatableService{
 
     getMetadata(url){
         return this.http.get(url)
-                .map((response: Response) => {response=response.json()})
+                .map((response: Response) => {
+                    response=response.json()
+                })
                 .catch((error: any)=>Observable.throw(error.json().error) || "server error");
     }
 
-    getData(url, requestParams){
-        return this.http.get(url, requestParams)
-                .map((response: Response)=>{response=response.json()})
+    getData(url, length, offset){
+        return this.http.get(url, this.createHeader(length,offset))
+                .map((response: Response)=>{
+                    response=response.json();
+                    return response;
+                })
                 .catch((error: any)=> Observable.throw(error.json().error) || "server error");
     }
 
-    createHeader(){
-
+    createHeader(length,offset){
+        return new RequestOptions({headers:new Headers({
+            'offset':offset,
+            'length':length
+        })});
     }
 }
