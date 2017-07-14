@@ -1,0 +1,16 @@
+.invert {
+    color: white;
+    background: black;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue
+}
+
+.bold {
+    font: bold;
+}
