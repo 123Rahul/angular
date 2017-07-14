@@ -2,12 +2,21 @@
     <label [attr.for]="alt.key">{{alt.label}}</label>
 
     <div [ngSwitch]="alt.controlType">
-        <input *ngSwitchCase="'textbox'" [formControlName]="alt.key" [id]="alt.key" [type]="alt.type">
-        <textarea *ngSwitchCase="'textarea'" [formControlName]="alt.key"
-            [id]="alt.key">
+        <input class="form-control" *ngSwitchCase="'TEXTFIELD'" [formControlName]="alt.id" [id]="alt.id" [type]="alt.inputType"
+            placeholder="{{alt.placeholder}}">
+        <textarea class="form-control" *ngSwitchCase="'TEXTAREA'" [formControlName]="alt.id" [rows]="alt.rows"
+            placeholder="{{alt.placeholder}}" [id]="alt.id">
         </textarea>
-        <select *ngSwitchCase="'dropdown'" [formControlName]="alt.key" [id]="alt.key">
-            <option *ngFor="let opt of alt.options" [value]="opt.key">{{opt.value}}</option>
+        <select class="form-control" *ngSwitchCase="'DROPDOWN'" [formControlName]="alt.id" [id]="alt.id">
+            <option *ngFor="let opt of alt.options" [value]="opt.value">{{opt.label}}</option>
         </select>
+        <div *ngSwitchCase="'CHECKBOX_GROUP'" [formControlName]="alt.id">
+            <input type="checkbox" *ngFor="let opt of alt.options" [value]="opt.value"/>{{opt.label}}
+        </div>
+        <div *ngSwitchCase="'RADIO_GROUP'">
+            <input type="radio" id="checkbox-1" value="value-1" formControlName="alt.id" />
+            <input type="radio" id="checkbox-2" value="value-2" formControlName="alt.id" />
+            <input type="radio" id="checkbox-3" value="value-2" formControlName="alt.id" />
+        </div>
     </div>
 </div>

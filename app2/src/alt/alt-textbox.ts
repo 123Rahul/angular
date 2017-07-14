@@ -1,11 +1,12 @@
 import { AltBase } from "./alt-base";
 
 export class AltTextbox extends AltBase<string> {
-    controlType = 'textbox';
-    type: string;
+    inputType: string;
+    placeholder: string;
     
     constructor(options:{}={}){
         super(options);
-        this.type = options['type'] || '';
+        this.inputType = options['inputType'] || '';
+        this.placeholder = options['placeholder'] || '';
     }
 }

@@ -12,18 +12,18 @@ import { AppHttpService } from "./app.http-service";
 export class Sample1Component implements OnInit {
     form: FormGroup;
     payload='';
+    formId='';
     alts: any[];
     constructor(private altHttpService:AppHttpService, private altControl: AltControlService){ }
 
     ngOnInit(){
-        this.altHttpService.getSample1Data()
-            .subscribe(response=>{
-                this.alts=this.altControl.createAlts(response);
-                this.form = this.altControl.toFormGroup(this.alts);
-            })
     }
 
-    submit(){
-        this.payload=JSON.stringify(this.form.value);
+    getForm(){
+        this.altHttpService.getFormJSON(this.formId)
+            .subscribe(response=>{
+                this.alts=this.altControl.createAlts(response.responseList[0].formList[0].componentList);
+                this.form = this.altControl.toFormGroup(this.alts);
+            })
     }
 }

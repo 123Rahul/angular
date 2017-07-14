@@ -1,6 +1,6 @@
 export class AltBase<T> {
     value: T;
-    key: string;
+    id: string;
     label: string;
     order: number;
     controlType: string;
@@ -9,7 +9,7 @@ export class AltBase<T> {
 
     constructor(options:{
         value?:T,
-        key?:string,
+        id?:string,
         label?:string,
         order?:number,
         controlType?:string,
@@ -17,7 +17,7 @@ export class AltBase<T> {
         event?:boolean
     }={}){
         this.value=options.value;
-        this.key=options.key||'';
+        this.id=options.id||'';
         this.label=options.label||'';
         this.order=options.order===undefined?1:options.order;
         this.controlType=options.controlType||'';

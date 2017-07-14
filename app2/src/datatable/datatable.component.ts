@@ -6,10 +6,11 @@ import { DatatableService } from "./datatable.service";
     templateUrl: './datatable.component.html'
 })
 export class DatatableComponent implements OnInit {
-    @Input() url: string;
+    @Input() headerUrl: string;
+    @Input() listUrl: string;
     length: number;
     offset: number;
-    metadata: any[];
+    header: any[];
     data: any;
     lengthList = [
         {key:5,value:5},
@@ -22,7 +23,14 @@ export class DatatableComponent implements OnInit {
     ngOnInit(){
         this.length=5;
         this.offset=0;
-        this.getDataAndUpdateUI();
+        this.datatableService.getHeaderData(this.headerUrl)
+            .subscribe((response)=>{
+                this.header = response.meta;
+                this.datatableService.getData(this.listUrl, this.length, this.offset)
+                    .subscribe((response)=>{
+                        this.data=response.data;
+                    })
+            })
     }
 
     next(){
@@ -36,7 +44,7 @@ export class DatatableComponent implements OnInit {
     }
 
     getDataAndUpdateUI(){
-        this.datatableService.getData(this.url, this.length, this.offset)
+        this.datatableService.getData(this.listUrl, this.length, this.offset)
             .subscribe((response)=>{
                 this.data=response.data;
             })

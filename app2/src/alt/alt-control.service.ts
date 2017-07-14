@@ -5,6 +5,8 @@ import { AltBase } from "../alt/alt-base";
 import { AltTextbox } from "../alt/alt-textbox";
 import { AltTextarea } from "../alt/alt-textarea";
 import { AltDropdown } from "../alt/alt-dropdown";
+import { AltCheckboxGroup } from "../alt/alt-checkbox-group";
+import { AltRadioGroup } from "../alt/alt-radio-group";
 
 @Injectable()
 export class AltControlService {
@@ -13,7 +15,7 @@ export class AltControlService {
     toFormGroup(alts: AltBase<any>[]){
         let group: any = {};
         alts.forEach(alt=>{
-            group[alt.key]=new FormControl(alt.value || '', Validators.required);
+            group[alt.id]=new FormControl(alt.value || '');
         });
         return new FormGroup(group);
     }
@@ -22,27 +24,19 @@ export class AltControlService {
         let alts=[];
         let alt;
         for(var i=0;i<response.length;i++){
-            if(response[i].type=="dropdown"){
-                alt=new AltDropdown({
-                    "key":response[i].key,
-                    "label":response[i].label,
-                    "order":response[i].order,
-                    "event":response[i].event,
-                    "options":response[i].options
-                })
-            } else if(response[i].type=="textbox"){
-                alt=new AltTextbox({
-                    "key":response[i].key,
-                    "label":response[i].label,
-                    "order":response[i].order,
-                    "event":response[i].event,
-                    "value":response[i].value
-                })
-            }
+            if(response[i].controlType=="TEXTAREA"){
+                alt=new AltTextarea(response[i])
+            } else if(response[i].controlType=="TEXTFIELD"){
+                alt=new AltTextbox(response[i])
+            } else if(response[i].controlType=="DROPDOWN"){
+                alt=new AltDropdown(response[i])
+            } else if(response[i].controlType=="CHECKBOX_GROUP"){
+                alt=new AltCheckboxGroup(response[i])
+            } 
             alts.push(alt);
         }
 
-        return alts.sort(function(a,b){return a.order-b.order});
+        return alts;
     }
 
     toValidators(validations: any[]){

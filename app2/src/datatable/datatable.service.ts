@@ -8,10 +8,11 @@ import "rxjs/add/operator/catch";
 export class DatatableService{
     constructor(private http:Http){ }
 
-    getMetadata(url){
+    getHeaderData(url){
         return this.http.get(url)
                 .map((response: Response) => {
-                    response=response.json()
+                    response=response.json();
+                    return response;
                 })
                 .catch((error: any)=>Observable.throw(error.json().error) || "server error");
     }

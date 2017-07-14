@@ -15,24 +15,24 @@ export class AltDynamicFormComponent implements OnInit {
 
     constructor(private altEventService:AltEventsService){ }
     ngOnInit(){
-        if(this.alt['event']){
-            this.form.controls[this.alt.key].valueChanges
-                .debounceTime(400)
-                .distinctUntilChanged()
-                .flatMap(value => 
-                    this.altEventService.populate(this.form.controls["brave"], value, this.alts))
-                    .subscribe(items=>{
-                        this.alts.forEach(element => {
-                            if(element["key"]=="brave"){
-                                element["options"]=items;
-                            }
-                        });
-                    }
-                );
-        }
+        // if(this.alt['event']){
+        //     this.form.controls[this.alt.id].valueChanges
+        //         .debounceTime(400)
+        //         .distinctUntilChanged()
+        //         .flatMap(value => 
+        //             this.altEventService.populate(this.form.controls["brave"], value, this.alts))
+        //             .subscribe(items=>{
+        //                 this.alts.forEach(element => {
+        //                     if(element["id"]=="brave"){
+        //                         element["options"]=items;
+        //                     }
+        //                 });
+        //             }
+        //         );
+        // }
     }
 
     get isValid(){
-        return this.form.controls[this.alt.key].valid;
+        return this.form.controls[this.alt.id].valid;
     }
 }

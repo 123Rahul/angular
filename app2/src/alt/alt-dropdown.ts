@@ -1,8 +1,8 @@
 import { AltBase } from "./alt-base";
+import { AltOption } from "./alt-option";
 
 export class AltDropdown extends AltBase<string> {
-    controlType = 'dropdown';
-    options: {key:string, value:string}[]=[];
+    options: AltOption[];
     
     constructor(options:{}={}){
         super(options);

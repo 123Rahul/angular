@@ -1,16 +1,17 @@
-<div *ngIf="form">
-    <form (ngSubmit)="submit()" [formGroup]="form">
-
-        <div *ngFor="let alt of alts" class="form-row">
-            <alt-df [alt]="alt" [form]="form" [alts]="alts"></alt-df>
+<div>
+    <div class="row">
+        <div class="col col-sm-6">
+            <input class="form form-control form-id" [(ngModel)]="formId" placeholder="Form id">
         </div>
-
-        <div class="form-row">
-            <button type="submit" [disabled]="!form.valid">Save</button>
+        <div class="col col-sm-6">
+            <button class="btn btn-primary" (click)="getForm()">Get Form</button>
         </div>
-    </form>
-
-    <div *ngIf="payload" class="form-row">
-        <pre>{{payload}}</pre>
+    </div>
+    <div *ngIf="form" class="stage-wrap" style="margin-top: 20px; margin-bottom: 40px;">
+        <form (ngSubmit)="submit()" [formGroup]="form">
+            <div *ngFor="let alt of alts" class="form-row">
+                <alt-df [alt]="alt" [form]="form" [alts]="alts"></alt-df>
+            </div>
+        </form>
     </div>
 </div>
